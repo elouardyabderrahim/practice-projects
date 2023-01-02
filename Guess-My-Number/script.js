@@ -1,17 +1,4 @@
 'use strict';
-/*
-// console.log(document.querySelector('.message'));
-console.log(document.querySelector('.message').textContent);
-
-// everything in side HTML should be part of DOM
-
-document.querySelector('.message').textContent = 'correct Number';
-
-document.querySelector('.number').textContent = 13;
-document.querySelector('.score').textContent = 17;
-let guess=document.querySelector('.guess').value = 12;
-console.log(guess);*/
-// generate a random value.
 
 // console.log(random);
 let random = Math.trunc(Math.random() * 20 + 1);
@@ -64,7 +51,6 @@ document.querySelector('.check').addEventListener('click', function () {
 
 // again refresh button
 document.querySelector('.again').addEventListener('click', () => {
-  // document.location.reload();
   random = Math.trunc(Math.random() * 20 + 1);
   document.querySelector('.score').textContent = 20;
   highestScore;
@@ -74,12 +60,3 @@ document.querySelector('.again').addEventListener('click', () => {
   document.querySelector('.number').textContent = '?';
   document.querySelector('.number').style.width = '15rem';
 });
-
-/*
-setTimeout(() => {
-  document.location.reload();
-}, 3000);
-// history.go(0);
-// history.go(-1);
-
-*/
