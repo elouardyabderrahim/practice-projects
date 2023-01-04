@@ -9,19 +9,21 @@ let highestScore = 0;
 document.querySelector('.check').addEventListener('click', function () {
   let score = Number(document.querySelector('.score').textContent) - 1;
   let guess = Number(document.querySelector('.guess').value);
+  const displayMessage = function (message) {
+    document.querySelector('.message').textContent = message;
+  };
   //  no guess
   if (!guess) {
-    document.querySelector('.message').textContent = 'try to guess pls ... ';
+    displayMessage('try to guess pls ... ');
   }
   // lose the game
   else if (score <= 0) {
-    document.querySelector('.message').textContent = '❌you lose the game!';
+    displayMessage('❌you lose the game!');
   } else {
     // the guess is correct
     if (guess === random) {
       document.querySelector('body').style.backgroundColor = '#60b347';
-      document.querySelector('.message').textContent =
-        '✔ Great job good guess!';
+      displayMessage('✔ Great job good guess!');
       document.querySelector('.number').textContent = random;
       document.querySelector('.number').style.width = '25rem';
 
@@ -34,17 +36,12 @@ document.querySelector('.check').addEventListener('click', function () {
       //the guess is wrong
     } else if (guess != random) {
       document.querySelector('.score').textContent = score;
-      // if guess is low.
-      if (guess < random) {
-        document.querySelector('.message').textContent =
-          '📉your guess is too low!';
-      }
-      // if guess is heigh.
-      else if (guess > random) {
-        document.querySelector('.message').textContent =
-          '📈your guess is too high!';
-        highestScore = document.querySelector('.highscore').textContent;
-      }
+      displayMessage(
+        guess < random
+          ? '📉your guess is too low!'
+          : '📈your guess is too high!',
+        (highestScore = document.querySelector('.highscore').textContent)
+      );
     }
   }
 });
